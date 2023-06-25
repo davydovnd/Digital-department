@@ -2,16 +2,16 @@ import numpy as np
 import pandas as pd
 
 # Загрузка данных эталона
-data = np.loadtxt("C:\исходные данные.txt", comments='#', usecols=(0, 1, 2, 3))
+data = np.loadtxt("исходные данные.txt", comments='#', usecols=(0, 1, 2, 3))
 
 # Загрузка данных для вычисления ошибки
-data1 = np.loadtxt("C:\вычисление ошибки.txt", comments='#', usecols=(0, 1))
+data1 = np.loadtxt("вычисление ошибки.txt", comments='#', usecols=(0, 1))
 
 # Занрузка данных эксперимента
-data2 = np.loadtxt("C:\данные эксперимента.txt", comments='#', usecols=(0, 1, 2))
+data2 = np.loadtxt("данные эксперимента.txt", comments='#', usecols=(0, 1, 2))
 
 # Загрузка банка фаз
-new = pd.read_csv("C:\DataPhases.csv")
+new = pd.read_csv("DataPhases.csv")
 
 # Расчет среднего значения постоянной электронографа
 Cav = (data[:, 1] * data[:, 3]).mean()
@@ -69,7 +69,7 @@ for j in range(10):
     print(phase_analysis(phase_dict[j], name_dict[j]))
 
 # Выгрузка данных качественного фазового анализа
-with open("Output.txt", "w") as text_file:
+with open("Results.txt", "w") as text_file:
     print('Расчет ошибки вычисления радиуса:', file=text_file)
     print(f'Rср = ({round(Rav, 1)} +- {round(dRav, 1)}) - радиус конуса', file=text_file)
     print('', file=text_file)
